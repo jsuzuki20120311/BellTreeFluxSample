@@ -1,8 +1,8 @@
 {
-  "name": "BellTreeFluxSample",
+  "name": "bell-tree-flux-sample",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "bell-tree-fluxを使用したsampleプログラム",
+  "main": "./script/dist/bundle.js",
   "scripts": {
     "test": "echo \"Elorror: no test specified\" && exit 1"
   },
@@ -10,10 +10,8 @@
   "author": "jBellTree",
   "license": "MIT",
   "dependencies": {
-    "d3": "^3.5.17",
-    "jquery": "^3.0.0",
     "react-dom": "^15.2.0",
-    "three": "^0.78.0"
+    "todomvc-app-css": "^2.0.6"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
