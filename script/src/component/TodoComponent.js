@@ -64,7 +64,7 @@ export default class TodoComponent extends React.Component {
 		return(
 			<li className="list-group-item">
 				<div className="row">
-					<div className="col-lg-8">
+					<div className="col-lg-10">
 						<input
 							type="text"
 							ref="todo_input"
@@ -73,7 +73,7 @@ export default class TodoComponent extends React.Component {
 							value={this.state.todo}
 						/>
 					</div>
-					<div className="col-lg-4">
+					<div className="col-lg-2">
 						<button
 							className="btn btn-danger"
 							onClick={this.handleClickDeleteButton}

@@ -20135,22 +20135,30 @@
 					_react2.default.createElement(
 						'fieldset',
 						{ className: 'center-block form-group' },
-						_react2.default.createElement('input', {
-							type: 'text',
-							id: 'new_todo_content',
-							ref: 'new_todo_content',
-							className: 'form-control',
-							placeholder: 'new todo',
-							value: this.state.newTodo,
-							onChange: this.handleChangeNewTodo
-						}),
 						_react2.default.createElement(
-							'button',
-							{
-								onClick: this.handleClickRegisterButton,
-								className: 'btn btn-primary'
-							},
-							'Add New Todo'
+							'div',
+							{ className: 'col-lg-10' },
+							_react2.default.createElement('input', {
+								type: 'text',
+								id: 'new_todo_content',
+								ref: 'new_todo_content',
+								className: 'form-control',
+								placeholder: 'new todo',
+								value: this.state.newTodo,
+								onChange: this.handleChangeNewTodo
+							})
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-lg-2' },
+							_react2.default.createElement(
+								'button',
+								{
+									onClick: this.handleClickRegisterButton,
+									className: 'btn btn-primary'
+								},
+								'Add New Todo'
+							)
 						)
 					),
 					_react2.default.createElement(
@@ -20295,7 +20303,7 @@
 						{ className: 'row' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-lg-8' },
+							{ className: 'col-lg-10' },
 							_react2.default.createElement('input', {
 								type: 'text',
 								ref: 'todo_input',
@@ -20306,7 +20314,7 @@
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-lg-4' },
+							{ className: 'col-lg-2' },
 							_react2.default.createElement(
 								'button',
 								{

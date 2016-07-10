@@ -94,24 +94,28 @@ export default class ContentComponent extends React.Component {
 
 	render() {
 
-		return(
+		return (
 			<div>
 				<fieldset className="center-block form-group">
-					<input
-						type="text"
-						id="new_todo_content"
-						ref="new_todo_content"
-						className="form-control"
-						placeholder="new todo"
-						value={this.state.newTodo}
-						onChange={this.handleChangeNewTodo}
-					/>
-					<button
-						onClick={this.handleClickRegisterButton}
-						className="btn btn-primary"
-					>
-						Add New Todo
-					</button>
+					<div className="col-lg-10">
+						<input
+							type="text"
+							id="new_todo_content"
+							ref="new_todo_content"
+							className="form-control"
+							placeholder="new todo"
+							value={this.state.newTodo}
+							onChange={this.handleChangeNewTodo}
+						/>
+					</div>
+					<div className="col-lg-2">
+						<button
+							onClick={this.handleClickRegisterButton}
+							className="btn btn-primary"
+						>
+							Add New Todo
+						</button>
+					</div>
 				</fieldset>
 				<ul className="list-group">
 					{this.state.todoList.map((todo, index) => {
