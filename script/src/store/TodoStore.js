@@ -1,3 +1,5 @@
+'use strict';
+
 import BellTreeFlux from '../lib/bell-tree-flux';
 import Constant from '../common/Constant';
 

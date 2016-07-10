@@ -19983,8 +19983,8 @@
 					null,
 					_react2.default.createElement(
 						'h1',
-						null,
-						'BellTreeFlux Sample'
+						{ className: 'display-1' },
+						'BellTreeFlux Sample Todo application'
 					)
 				);
 			}
@@ -20130,26 +20130,32 @@
 				var _this2 = this;
 	
 				return _react2.default.createElement(
-					'main',
+					'div',
 					null,
 					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'button',
-							{ onClick: this.handleClickRegisterButton },
-							'Add New Todo'
-						),
+						'fieldset',
+						{ className: 'center-block form-group' },
 						_react2.default.createElement('input', {
 							type: 'text',
+							id: 'new_todo_content',
 							ref: 'new_todo_content',
+							className: 'form-control',
+							placeholder: 'new todo',
 							value: this.state.newTodo,
 							onChange: this.handleChangeNewTodo
-						})
+						}),
+						_react2.default.createElement(
+							'button',
+							{
+								onClick: this.handleClickRegisterButton,
+								className: 'btn btn-primary'
+							},
+							'Add New Todo'
+						)
 					),
 					_react2.default.createElement(
 						'ul',
-						null,
+						{ className: 'list-group' },
 						this.state.todoList.map(function (todo, index) {
 							return _react2.default.createElement(_TodoComponent2.default, {
 								key: index,
@@ -20230,7 +20236,6 @@
 	
 			_this.state = {};
 			_this.handleChangeTodo = _this.handleChangeTodo.bind(_this);
-			_this.handleClickUpdateButton = _this.handleClickUpdateButton.bind(_this);
 			_this.handleClickDeleteButton = _this.handleClickDeleteButton.bind(_this);
 			_this.onUpdate = _this.onUpdate.bind(_this);
 			_this.onDelete = _this.onDelete.bind(_this);
@@ -20256,13 +20261,8 @@
 			key: 'handleChangeTodo',
 			value: function handleChangeTodo(event) {
 				event.preventDefault();
-				this.setState({ todo: event.target.value });
-			}
-		}, {
-			key: 'handleClickUpdateButton',
-			value: function handleClickUpdateButton() {
 				var index = this.props.index;
-				var todo = this.state.todo;
+				var todo = event.target.value;
 				this.props.handleClickUpdateButton(index, todo);
 			}
 		}, {
@@ -20289,17 +20289,25 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'li',
-					null,
-					_react2.default.createElement('input', { type: 'text', ref: 'todo_input', onChange: this.handleChangeTodo, value: this.state.todo }),
+					{ className: 'list-group-item' },
 					_react2.default.createElement(
-						'button',
-						{ onClick: this.handleClickUpdateButton },
-						'Update'
-					),
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.handleClickDeleteButton },
-						'Delete'
+						'fieldset',
+						{ clasName: 'form-group' },
+						_react2.default.createElement('input', {
+							type: 'text',
+							ref: 'todo_input',
+							className: 'form-control',
+							onChange: this.handleChangeTodo,
+							value: this.state.todo
+						}),
+						_react2.default.createElement(
+							'button',
+							{
+								className: 'btn btn-danger',
+								onClick: this.handleClickDeleteButton
+							},
+							'Delete'
+						)
 					)
 				);
 			}

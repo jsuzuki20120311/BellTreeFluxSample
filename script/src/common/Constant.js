@@ -1,3 +1,5 @@
+'use strict';
+
 const Constant = {
 	ACTION_TYPE: {
 		REGISTER_TODO: 'REGISTER_TODO',

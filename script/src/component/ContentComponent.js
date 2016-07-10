@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import BellTreeFlux from '../lib/bell-tree-flux';
 import Constant from '../common/Constant';
@@ -93,17 +95,25 @@ export default class ContentComponent extends React.Component {
 	render() {
 
 		return(
-			<main>
-				<div>
-					<button onClick={this.handleClickRegisterButton}>Add New Todo</button>
+			<div>
+				<fieldset className="center-block form-group">
 					<input
 						type="text"
+						id="new_todo_content"
 						ref="new_todo_content"
+						className="form-control"
+						placeholder="new todo"
 						value={this.state.newTodo}
 						onChange={this.handleChangeNewTodo}
 					/>
-				</div>
-				<ul>
+					<button
+						onClick={this.handleClickRegisterButton}
+						className="btn btn-primary"
+					>
+						Add New Todo
+					</button>
+				</fieldset>
+				<ul className="list-group">
 					{this.state.todoList.map((todo, index) => {
 						return (
 							<TodoComponent
@@ -116,7 +126,7 @@ export default class ContentComponent extends React.Component {
 						);
 				  })}
 				</ul>
-			</main>
+			</div>
 		);
 	}
 

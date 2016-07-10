@@ -10,8 +10,7 @@
   "author": "jBellTree",
   "license": "MIT",
   "dependencies": {
-    "react-dom": "^15.2.0",
-    "todomvc-app-css": "^2.0.6"
+    "react-dom": "^15.2.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",

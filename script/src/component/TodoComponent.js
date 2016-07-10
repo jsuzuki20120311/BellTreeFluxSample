@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import BellTreeFlux from '../lib/bell-tree-flux';
 import Constant from '../common/Constant';
@@ -10,7 +12,6 @@ export default class TodoComponent extends React.Component {
 		super(props);
 		this.state = {};
 		this.handleChangeTodo = this.handleChangeTodo.bind(this);
-		this.handleClickUpdateButton = this.handleClickUpdateButton.bind(this);
 		this.handleClickDeleteButton = this.handleClickDeleteButton.bind(this);
 		this.onUpdate = this.onUpdate.bind(this);
 		this.onDelete= this.onDelete.bind(this);
@@ -34,13 +35,8 @@ export default class TodoComponent extends React.Component {
 
 	handleChangeTodo(event) {
 		event.preventDefault();
-		this.setState({todo: event.target.value});
-	}
-
-
-	handleClickUpdateButton() {
 		const index = this.props.index;
-		const todo = this.state.todo;
+		const todo = event.target.value;
 		this.props.handleClickUpdateButton(index, todo);
 	}
 
@@ -65,10 +61,22 @@ export default class TodoComponent extends React.Component {
 
 	render() {
 		return(
-			<li>
-				<input type="text" ref="todo_input" onChange={this.handleChangeTodo} value={this.state.todo}/>
-				<button onClick={this.handleClickUpdateButton}>Update</button>
-				<button onClick={this.handleClickDeleteButton}>Delete</button>
+			<li className="list-group-item">
+				<fieldset clasName="form-group">
+					<input
+						type="text"
+						ref="todo_input"
+						className="form-control"
+						onChange={this.handleChangeTodo}
+						value={this.state.todo}
+					/>
+					<button
+						className="btn btn-danger"
+						onClick={this.handleClickDeleteButton}
+					>
+						Delete
+					</button>
+				</fieldset>
 			</li>
 		);
 	}
