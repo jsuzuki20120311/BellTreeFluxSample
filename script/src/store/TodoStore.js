@@ -6,6 +6,12 @@ import Constant from '../common/Constant';
 
 export default class TodoStore {
 
+
+	static get STORAGE_KEY() {
+		return 'bell-tree-flux-sample-data';
+	}
+
+
 	static getStore() {
 		if (!TodoStore.instance) {
 			TodoStore.instance = new TodoStore();
@@ -15,13 +21,15 @@ export default class TodoStore {
 
 
 	constructor() {
-		this.data = {};
-		this.data.todoList = [
-			'ゴミを捨てる',
-			'風呂を掃除する',
-			'皿を洗う',
-			'トイレを掃除する'
-		];
+		if (JSON.parse(window.localStorage.getItem(TodoStore.STORAGE_KEY))) {
+		 	this.data = JSON.parse(window.localStorage.getItem(TodoStore.STORAGE_KEY));
+		} else {
+			this.data = {};
+		}
+		if (!this.data.todoList) {
+			this.data.todoList = [];
+			window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
+		}
 		BellTreeFlux.Dispatcher.getDispatcher().register(Constant.ACTION_TYPE.REGISTER_TODO, this.add.bind(this));
 		BellTreeFlux.Dispatcher.getDispatcher().register(Constant.ACTION_TYPE.UPDATE_TODO, this.change.bind(this));
 		BellTreeFlux.Dispatcher.getDispatcher().register(Constant.ACTION_TYPE.DELETE_TODO, this.delete.bind(this));
@@ -33,16 +41,19 @@ export default class TodoStore {
 
 	add(data, payload) {
 		this.data.todoList.push(payload.todo);
+		window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
 	}
 
 
 	change(data, payload) {
 		this.data.todoList[payload.index] = payload.todo;
+		window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
 	}
 
 
 	delete(data, payload) {
 		this.data.todoList.splice(payload.index, 1);
+		window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
 	}
 
 

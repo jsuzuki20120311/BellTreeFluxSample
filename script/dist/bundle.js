@@ -20367,13 +20367,25 @@
 				}
 				return TodoStore.instance;
 			}
+		}, {
+			key: 'STORAGE_KEY',
+			get: function get() {
+				return 'bell-tree-flux-sample-data';
+			}
 		}]);
 	
 		function TodoStore() {
 			_classCallCheck(this, TodoStore);
 	
-			this.data = {};
-			this.data.todoList = ['ゴミを捨てる', '風呂を掃除する', '皿を洗う', 'トイレを掃除する'];
+			if (JSON.parse(window.localStorage.getItem(TodoStore.STORAGE_KEY))) {
+				this.data = JSON.parse(window.localStorage.getItem(TodoStore.STORAGE_KEY));
+			} else {
+				this.data = {};
+			}
+			if (!this.data.todoList) {
+				this.data.todoList = [];
+				window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
+			}
 			_bellTreeFlux2.default.Dispatcher.getDispatcher().register(_Constant2.default.ACTION_TYPE.REGISTER_TODO, this.add.bind(this));
 			_bellTreeFlux2.default.Dispatcher.getDispatcher().register(_Constant2.default.ACTION_TYPE.UPDATE_TODO, this.change.bind(this));
 			_bellTreeFlux2.default.Dispatcher.getDispatcher().register(_Constant2.default.ACTION_TYPE.DELETE_TODO, this.delete.bind(this));
@@ -20388,16 +20400,19 @@
 			key: 'add',
 			value: function add(data, payload) {
 				this.data.todoList.push(payload.todo);
+				window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
 			}
 		}, {
 			key: 'change',
 			value: function change(data, payload) {
 				this.data.todoList[payload.index] = payload.todo;
+				window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
 			}
 		}, {
 			key: 'delete',
 			value: function _delete(data, payload) {
 				this.data.todoList.splice(payload.index, 1);
+				window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
 			}
 		}, {
 			key: 'emit',
