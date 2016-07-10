@@ -1,5 +1,5 @@
 import React from 'react';
-import BellTreeFlux from 'bell-tree-flux';
+import BellTreeFlux from '../lib/bell-tree-flux';
 import Constant from '../common/Constant';
 
 
