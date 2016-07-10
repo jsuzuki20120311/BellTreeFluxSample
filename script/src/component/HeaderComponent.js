@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 
 
@@ -11,7 +13,7 @@ export default class HeaderComponent extends React.Component {
 	render() {
 		return(
 			<header>
-				<h1>BellTreeFlux Sample</h1>
+				<h1 className="display-1">BellTreeFlux Sample Todo application</h1>
 			</header>
 		);
 	}
