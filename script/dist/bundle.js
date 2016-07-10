@@ -20291,22 +20291,30 @@
 					'li',
 					{ className: 'list-group-item' },
 					_react2.default.createElement(
-						'fieldset',
-						{ clasName: 'form-group' },
-						_react2.default.createElement('input', {
-							type: 'text',
-							ref: 'todo_input',
-							className: 'form-control',
-							onChange: this.handleChangeTodo,
-							value: this.state.todo
-						}),
+						'div',
+						{ className: 'row' },
 						_react2.default.createElement(
-							'button',
-							{
-								className: 'btn btn-danger',
-								onClick: this.handleClickDeleteButton
-							},
-							'Delete'
+							'div',
+							{ className: 'col-lg-8' },
+							_react2.default.createElement('input', {
+								type: 'text',
+								ref: 'todo_input',
+								className: 'form-control',
+								onChange: this.handleChangeTodo,
+								value: this.state.todo
+							})
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-lg-4' },
+							_react2.default.createElement(
+								'button',
+								{
+									className: 'btn btn-danger',
+									onClick: this.handleClickDeleteButton
+								},
+								'Delete'
+							)
 						)
 					)
 				);

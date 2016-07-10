@@ -59,24 +59,29 @@ export default class TodoComponent extends React.Component {
 		});
 	}
 
+
 	render() {
 		return(
 			<li className="list-group-item">
-				<fieldset clasName="form-group">
-					<input
-						type="text"
-						ref="todo_input"
-						className="form-control"
-						onChange={this.handleChangeTodo}
-						value={this.state.todo}
-					/>
-					<button
-						className="btn btn-danger"
-						onClick={this.handleClickDeleteButton}
-					>
-						Delete
-					</button>
-				</fieldset>
+				<div className="row">
+					<div className="col-lg-8">
+						<input
+							type="text"
+							ref="todo_input"
+							className="form-control"
+							onChange={this.handleChangeTodo}
+							value={this.state.todo}
+						/>
+					</div>
+					<div className="col-lg-4">
+						<button
+							className="btn btn-danger"
+							onClick={this.handleClickDeleteButton}
+						>
+							Delete
+						</button>
+					</div>
+				</div>
 			</li>
 		);
 	}
