@@ -19985,6 +19985,28 @@
 						'h1',
 						{ className: 'display-1' },
 						'BellTreeFlux Sample Todo application'
+					),
+					_react2.default.createElement(
+						'ul',
+						null,
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://github.com/jsuzuki20120311/bell-tree-flux', target: '_blank' },
+								'GitHub bell-tree-flux'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://github.com/jsuzuki20120311/bell-tree-flux-sample', target: '_blank' },
+								'GitHub bell-tree-flux-sample'
+							)
+						)
 					)
 				);
 			}
