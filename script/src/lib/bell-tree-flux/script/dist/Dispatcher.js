@@ -137,4 +137,3 @@ var Dispatcher = function () {
 }();
 
 exports.default = Dispatcher;
-;
