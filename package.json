@@ -4,13 +4,15 @@
   "description": "bell-tree-fluxを使用したsampleプログラム",
   "main": "./script/dist/bundle.js",
   "scripts": {
-    "test": "echo \"Elorror: no test specified\" && exit 1"
+    "test": "echo \"Elorror: no test specified\" && exit 1",
+    "dev": "webpack --progress --colors --watch"
   },
   "keywords": [],
   "author": "jBellTree",
   "license": "MIT",
   "dependencies": {
-    "react-dom": "^15.2.0"
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
