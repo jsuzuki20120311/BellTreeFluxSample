@@ -4,7 +4,8 @@
   "description": "bell-tree-fluxを使用したsampleプログラム",
   "main": "./script/dist/bundle.js",
   "scripts": {
-    "test": "echo \"Elorror: no test specified\" && exit 1"
+    "test": "echo \"Elorror: no test specified\" && exit 1",
+    "dev": "webpack --progress --colors --watch"
   },
   "keywords": [],
   "author": "jBellTree",
