@@ -1,6 +1,6 @@
 'use strict';
 
-import BellTreeFlux from '../lib/bell-tree-flux';
+import BellTreeFlux from 'bell-tree-flux';
 import Constant from '../common/Constant';
 
 
@@ -39,6 +39,7 @@ export default class TodoStore {
 		return this.data;
 	}
 
+
 	add(data, payload) {
 		this.data.todoList.push(payload.todo);
 		window.localStorage.setItem(TodoStore.STORAGE_KEY, JSON.stringify(this.data));
@@ -61,4 +62,4 @@ export default class TodoStore {
 		handler(this.data, payload);
 	}
 
-};
+}

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BellTreeFlux from '../lib/bell-tree-flux';
+import BellTreeFlux from 'bell-tree-flux';
 import Constant from '../common/Constant';
 import TodoComponent from './TodoComponent';
 import TodoStore from '../store/TodoStore';
