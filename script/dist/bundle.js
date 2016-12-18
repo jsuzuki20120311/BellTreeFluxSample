@@ -21725,6 +21725,7 @@
 			_this.handleClickDeleteButton = _this.handleClickDeleteButton.bind(_this);
 			_this.handleClickUpdateButton = _this.handleClickUpdateButton.bind(_this);
 			_this.handleChangeNewTodo = _this.handleChangeNewTodo.bind(_this);
+			_this.handleKeyDown = _this.handleKeyDown.bind(_this);
 			_this.onRegisterTodo = _this.onRegisterTodo.bind(_this);
 			_this.onDeleteTodo = _this.onDeleteTodo.bind(_this);
 			_bellTreeFlux2.default.Dispatcher.getDispatcher().register(_Constant2.default.ACTION_TYPE.REGISTER_TODO, _this.onRegisterTodo);
@@ -21750,14 +21751,7 @@
 		}, {
 			key: 'handleClickRegisterButton',
 			value: function handleClickRegisterButton() {
-				var payload = {
-					actionType: _Constant2.default.ACTION_TYPE.REGISTER_TODO,
-					todo: this.refs.new_todo_content.value
-				};
-				_bellTreeFlux2.default.Dispatcher.getDispatcher().dispatch(payload);
-				this.setState({
-					newTodo: ''
-				});
+				this.registerTodo();
 			}
 		}, {
 			key: 'handleClickDeleteButton',
@@ -21787,6 +21781,15 @@
 				});
 			}
 		}, {
+			key: 'handleKeyDown',
+			value: function handleKeyDown(event) {
+				var ENTER = 13;
+				if (event.keyCode !== ENTER) {
+					return;
+				}
+				this.registerTodo();
+			}
+		}, {
 			key: 'onRegisterTodo',
 			value: function onRegisterTodo(data) {
 				this.setState({
@@ -21798,6 +21801,18 @@
 			value: function onDeleteTodo(data) {
 				this.setState({
 					todoList: data.todoList
+				});
+			}
+		}, {
+			key: 'registerTodo',
+			value: function registerTodo() {
+				var payload = {
+					actionType: _Constant2.default.ACTION_TYPE.REGISTER_TODO,
+					todo: this.refs.new_todo_content.value
+				};
+				_bellTreeFlux2.default.Dispatcher.getDispatcher().dispatch(payload);
+				this.setState({
+					newTodo: ''
 				});
 			}
 		}, {
@@ -21821,7 +21836,8 @@
 								className: 'form-control',
 								placeholder: 'new todo',
 								value: this.state.newTodo,
-								onChange: this.handleChangeNewTodo
+								onChange: this.handleChangeNewTodo,
+								onKeyDown: this.handleKeyDown
 							})
 						),
 						_react2.default.createElement(
