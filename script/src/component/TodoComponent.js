@@ -45,7 +45,6 @@ export default class TodoComponent extends React.Component {
 		this.props.handleClickDeleteButton(this.props.index);
 	}
 
-
 	onUpdate(data) {
 		this.setState({
 			todo: data.todoList[this.props.index]
