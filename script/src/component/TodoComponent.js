@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BellTreeFlux from '../lib/bell-tree-flux';
+import BellTreeFlux from 'bell-tree-flux';
 import Constant from '../common/Constant';
 
 
@@ -44,7 +44,6 @@ export default class TodoComponent extends React.Component {
 	handleClickDeleteButton() {
 		this.props.handleClickDeleteButton(this.props.index);
 	}
-
 
 	onUpdate(data) {
 		this.setState({

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BellTreeFlux from '../lib/bell-tree-flux';
+import BellTreeFlux from 'bell-tree-flux';
 import Constant from '../common/Constant';
 import TodoComponent from './TodoComponent';
 import TodoStore from '../store/TodoStore';
@@ -18,6 +18,7 @@ export default class ContentComponent extends React.Component {
 		this.handleClickDeleteButton = this.handleClickDeleteButton.bind(this);
 		this.handleClickUpdateButton = this.handleClickUpdateButton.bind(this);
 		this.handleChangeNewTodo = this.handleChangeNewTodo.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.onRegisterTodo = this.onRegisterTodo.bind(this);
 		this.onDeleteTodo = this.onDeleteTodo.bind(this);
 		BellTreeFlux.Dispatcher.getDispatcher().register(Constant.ACTION_TYPE.REGISTER_TODO, this.onRegisterTodo);
@@ -39,15 +40,9 @@ export default class ContentComponent extends React.Component {
 		BellTreeFlux.Dispatcher.getDispatcher().remove(Constant.ACTION_TYPE.DELETE_TODO, this.onDeleteTodo);
 	}
 
+
 	handleClickRegisterButton() {
-		const payload = {
-			actionType: Constant.ACTION_TYPE.REGISTER_TODO,
-			todo: this.refs.new_todo_content.value
-		};
-		BellTreeFlux.Dispatcher.getDispatcher().dispatch(payload);
-		this.setState({
-			newTodo: ''
-		});
+		this.registerTodo();
 	}
 
 
@@ -78,6 +73,15 @@ export default class ContentComponent extends React.Component {
 	}
 
 
+	handleKeyDown(event) {
+		const ENTER = 13;
+    if (event.keyCode !== ENTER) {
+			return;
+		}
+		this.registerTodo();
+	}
+
+
 	onRegisterTodo(data) {
 		this.setState({
 			todoList: data.todoList
@@ -88,6 +92,18 @@ export default class ContentComponent extends React.Component {
 	onDeleteTodo(data) {
 		this.setState({
 			todoList: data.todoList
+		});
+	}
+
+
+	registerTodo() {
+		const payload = {
+			actionType: Constant.ACTION_TYPE.REGISTER_TODO,
+			todo: this.refs.new_todo_content.value
+		};
+		BellTreeFlux.Dispatcher.getDispatcher().dispatch(payload);
+		this.setState({
+			newTodo: ''
 		});
 	}
 
@@ -106,6 +122,7 @@ export default class ContentComponent extends React.Component {
 							placeholder="new todo"
 							value={this.state.newTodo}
 							onChange={this.handleChangeNewTodo}
+							onKeyDown={this.handleKeyDown}
 						/>
 					</div>
 					<div className="col-lg-2">
